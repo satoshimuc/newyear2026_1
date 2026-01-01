@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>年賀状おみくじ 2026</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Serif JP) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* フォント設定 */
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+        }
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+        
+        /* 縦書き */
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+        }
+
+        /* アニメーション定義 */
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 3s infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+
+        @keyframes spin-slow-reverse {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        .animate-spin-slow-reverse {
+            animation: spin-slow-reverse 20s linear infinite;
+        }
+
+        @keyframes shake-hard {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-5px, -5px) rotate(-10deg); }
+            20% { transform: translate(5px, 5px) rotate(10deg); }
+            30% { transform: translate(-5px, 5px) rotate(-10deg); }
+            40% { transform: translate(5px, -5px) rotate(10deg); }
+            50% { transform: translate(-5px, -5px) rotate(-10deg); }
+            60% { transform: translate(5px, 5px) rotate(10deg); }
+            70% { transform: translate(-5px, 5px) rotate(-10deg); }
+            80% { transform: translate(5px, -5px) rotate(10deg); }
+            90% { transform: translate(-2px, 2px) rotate(-5deg); }
+            100% { transform: translate(0, 0) rotate(0deg); }
+        }
+        .animate-shake-hard {
+            animation: shake-hard 0.8s infinite;
+        }
+
+        @keyframes bounce-small {
+           0%, 100% { transform: translateY(0); }
+           50% { transform: translateY(-5px); }
+        }
+        .animate-bounce-small {
+            animation: bounce-small 1s infinite;
+        }
+
+        @keyframes pop-in {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop-in {
+            animation: pop-in 0.3s ease-out forwards;
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fade-in 0.5s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
+        }
+        .animate-confetti {
+            animation-name: confetti-fall;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+        }
+
+        /* 画面切り替え用ユーティリティ */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-stone-800 min-h-screen flex items-center justify-center p-4">
+
+    <!-- メインコンテナ -->
+    <div id="app" class="max-w-md w-full bg-white shadow-2xl rounded-2xl overflow-hidden relative border-4 border-stone-200 min-h-[600px]">
+        
+        <!-- 背景装飾（年賀状画面用） -->
+        <div id="bg-pattern" class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none z-0">
+            <div class="w-full h-full" style="background-image: radial-gradient(#d62929 2px, transparent 2px); background-size: 20px 20px;"></div>
+        </div>
+
+        <!-- ====================
+             画面1: 年賀状 (Card)
+             ==================== -->
+        <div id="screen-card" class="relative z-10 flex flex-col items-center px-6 py-10 animate-fade-in text-center h-full">
+            <!-- 年号・日付 -->
+            <div class="absolute top-6 left-6 writing-vertical text-stone-400 text-sm tracking-widest font-serif opacity-70">
+                令和八年 元旦
+            </div>
+
+            <!-- 初日の出と富士山風のデザイン -->
+            <div class="mt-6 mb-6 relative">
+                <div class="w-32 h-32 rounded-full bg-red-500 flex items-center justify-center shadow-lg shadow-red-200">
+                    <!-- Sun Icon -->
+                    <svg class="text-yellow-200 w-16 h-16 animate-pulse-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                </div>
+                <div class="absolute -bottom-2 -right-4 bg-white p-2 rounded-full shadow-sm border border-stone-100">
+                    <span class="text-3xl">🐴</span>
+                </div>
+            </div>
+
+            <!-- メインの挨拶 -->
+            <h1 class="text-4xl font-bold text-red-600 mb-2 tracking-widest font-serif">
+                謹賀新年
+            </h1>
+            <p class="text-stone-500 mb-8 font-serif tracking-widest text-sm">Happy New Year 2026</p>
+
+            <!-- メッセージ -->
+            <div class="bg-red-50 p-6 rounded-xl border border-red-100 mb-10 w-full shadow-sm">
+                <div class="text-stone-700 mb-6 leading-8 font-serif">
+                    <p>旧年中は大変お世話になりました</p>
+                    <p>本年もどうぞ<br class="sm:hidden" />よろしくお願い申し上げます</p>
+                </div>
+                
+                <div class="text-red-600 font-bold mt-4 pt-4 border-t border-red-200 border-dashed">
+                    <p class="text-sm mb-2 opacity-80">＼ 今年の運試し ／</p>
+                    <p class="text-lg leading-relaxed">
+                        特別なおみくじを<br/>
+                        ご用意しました！
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTAボタン -->
+            <button id="btn-draw" class="group relative bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-all hover:scale-105 hover:shadow-xl active:scale-95 w-full max-w-xs flex items-center justify-center space-x-2 cursor-pointer">
+                <!-- Sparkles Icon -->
+                <svg class="w-5 h-5 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>
+                <span>今年の運勢を占う</span>
+                <!-- ChevronRight Icon -->
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+        </div>
+
+        <!-- ====================
+             画面2: おみくじ中 (Shaking)
+             ==================== -->
+        <div id="screen-shaking" class="hidden min-h-[600px] flex-col items-center justify-center relative z-10 bg-red-700 overflow-hidden h-full w-full">
+            
+            <!-- 背景エフェクト -->
+            <div class="absolute inset-0 opacity-20 animate-spin-slow-reverse pointer-events-none" 
+                style="background-image: conic-gradient(from 0deg at 50% 50%, transparent 0deg, white 15deg, transparent 30deg, white 45deg, transparent 60deg, white 75deg, transparent 90deg, white 105deg, transparent 120deg, white 135deg, transparent 150deg, white 165deg, transparent 180deg, white 195deg, transparent 210deg, white 225deg, transparent 240deg, white 255deg, transparent 270deg, white 285deg, transparent 300deg, white 315deg, transparent 330deg, white 345deg, transparent 360deg);">
+            </div>
+
+            <!-- 舞うアイテム -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Flower Icon -->
+                <svg class="absolute top-1/4 left-1/4 text-yellow-300 w-12 h-12 animate-bounce opacity-40" style="animation-duration: 2s;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5z"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/><path d="M8 8l1.5 1.5"/><path d="M14.5 14.5L16 16"/><path d="M8 16l1.5-1.5"/><path d="M14.5 9.5L16 8"/></svg>
+                <!-- Star Icon -->
+                <svg class="absolute bottom-1/4 right-1/4 text-yellow-200 w-8 h-8 animate-ping opacity-30" style="animation-duration: 1.5s;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <div class="absolute top-1/3 right-10 text-4xl animate-pulse delay-100 opacity-50">✨</div>
+                <div class="absolute bottom-1/3 left-10 text-4xl animate-pulse delay-300 opacity-50">✨</div>
+            </div>
+
+            <!-- メインのおみくじ箱 -->
+            <div class="relative z-20 animate-shake-hard">
+                <div class="text-9xl filter drop-shadow-2xl scale-125">🗳️</div>
+                <!-- 後光 -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full blur-2xl opacity-50 -z-10 animate-pulse"></div>
+            </div>
+
+            <!-- テキストメッセージ -->
+            <div class="mt-12 text-center relative z-20">
+                <p class="text-4xl font-black text-white tracking-[0.2em] drop-shadow-lg font-serif mb-2 animate-bounce-small">
+                    祈願中
+                </p>
+                <div class="inline-flex items-center justify-center space-x-2 bg-black/30 backdrop-blur-md px-6 py-2 rounded-full border border-yellow-400/50 shadow-lg animate-pulse">
+                    <!-- Sparkles Icon -->
+                    <svg class="w-4 h-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>
+                    <span class="text-yellow-100 font-bold text-sm tracking-wider">太田の念を注入しています...</span>
+                    <!-- Sparkles Icon -->
+                    <svg class="w-4 h-4 text-yellow-300" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M9 3v4"/><path d="M3 5h4"/><path d="M3 9h4"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====================
+             画面3: 結果表示 (Result)
+             ==================== -->
+        <div id="screen-result" class="hidden relative z-10 flex-col items-center animate-pop-in min-h-[600px] overflow-hidden h-full w-full">
+            
+            <!-- 豪華な背景 -->
+            <div class="absolute inset-0 z-0 bg-gradient-to-b from-yellow-50 via-red-50 to-white"></div>
+            <div class="absolute inset-0 z-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/japanese-sayagata.png');"></div>
+
+            <!-- 紙吹雪コンテナ -->
+            <div id="confetti-container" class="absolute inset-0 pointer-events-none z-20 overflow-hidden w-full h-full"></div>
+
+            <!-- コンテンツ -->
+            <div class="relative z-30 w-full flex flex-col items-center p-8 h-full">
+                
+                <!-- お祝いヘッダー -->
+                <div class="w-full flex justify-between items-center mb-4">
+                    <!-- Flower Icon -->
+                    <svg class="text-red-400 w-8 h-8 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5z"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/><path d="M8 8l1.5 1.5"/><path d="M14.5 14.5L16 16"/><path d="M8 16l1.5-1.5"/><path d="M14.5 9.5L16 8"/></svg>
+                    <div class="px-4 py-1 bg-red-600 text-white text-xs font-bold rounded-full tracking-widest border-2 border-yellow-400 shadow-sm">
+                        ✨ 新春運試し ✨
+                    </div>
+                    <!-- Flower Icon -->
+                    <svg class="text-red-400 w-8 h-8 animate-spin-slow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5z"/><path d="M12 7.5V9"/><path d="M7.5 12H9"/><path d="M16.5 12H15"/><path d="M12 16.5V15"/><path d="M8 8l1.5 1.5"/><path d="M14.5 14.5L16 16"/><path d="M8 16l1.5-1.5"/><path d="M14.5 9.5L16 8"/></svg>
+                </div>
+
+                <!-- 結果のランク -->
+                <div class="relative mb-6 mt-4 text-center">
+                    <!-- 後光 -->
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-yellow-200 via-yellow-100 to-yellow-200 rounded-full animate-pulse-slow opacity-80 blur-xl"></div>
+                    <!-- スタンプ風枠 -->
+                    <div class="relative border-4 border-red-600 w-32 h-32 rounded-full flex items-center justify-center bg-white shadow-xl rotate-[-5deg]">
+                        <div class="absolute inset-1 border border-red-400 rounded-full border-dashed"></div>
+                        <h2 class="text-5xl font-black font-serif tracking-widest text-red-600 drop-shadow-md mt-1 ml-1">
+                            大吉
+                        </h2>
+                    </div>
+                </div>
+
+                <!-- 星評価 -->
+                <div class="flex space-x-2 mb-6 text-yellow-500 drop-shadow-sm bg-white/50 px-4 py-1 rounded-full">
+                    <span class="text-xl">★</span><span class="text-xl">★</span><span class="text-xl">★</span><span class="text-xl">★</span><span class="text-xl">★</span>
+                </div>
+
+                <!-- メインテキスト -->
+                <div class="w-full bg-orange-50 border-y-4 border-double border-red-300 py-6 px-4 mb-6 text-center relative shadow-sm">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-red-600 text-white text-[10px] px-2 py-0.5 rounded shadow-sm">
+                        お告げ
+                    </div>
+                    <p class="font-bold text-xl text-stone-800 leading-relaxed font-serif">
+                        オフィス・ムック/ 太田の仕事をやると運気があがります。
+                    </p>
+                </div>
+
+                <!-- 詳細カード -->
+                <div class="grid grid-cols-1 gap-3 w-full mb-8">
+                    <!-- 詳細1 -->
+                    <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl flex items-start space-x-3 border-2 border-red-200 shadow-sm">
+                        <div class="mt-1 flex-shrink-0 bg-red-100 p-1.5 rounded-full">
+                            <!-- ThumbsUp Icon -->
+                            <svg class="w-5 h-5 text-red-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+                        </div>
+                        <div class="text-sm text-left">
+                            <span class="font-bold text-red-500 block text-xs mb-1 tracking-wider">◆ アクション</span>
+                            <span class="font-bold text-stone-800 text-base">すすんでやりましょう🐴</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 詳細2 -->
+                    <div class="bg-white/80 backdrop-blur-sm p-4 rounded-xl flex items-start space-x-3 border-2 border-red-200 shadow-sm">
+                        <div class="mt-1 flex-shrink-0 bg-red-100 p-1.5 rounded-full">
+                            <!-- Send Icon -->
+                            <svg class="w-5 h-5 text-red-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </div>
+                        <div class="text-sm text-left">
+                            <span class="font-bold text-red-500 block text-xs mb-1 tracking-wider">◆ 開運の鍵</span>
+                            <span class="font-bold text-stone-800 text-base">この年賀状を3人以上に送るとさらに運気があがります。</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 戻るボタン -->
+                <button id="btn-reset" class="mt-auto bg-stone-800 text-white hover:bg-stone-700 px-6 py-3 rounded-full flex items-center space-x-2 text-sm transition-all shadow-md active:scale-95 cursor-pointer">
+                    <!-- RotateCcw Icon -->
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 12"/><path d="M3 3v9h9"/></svg>
+                    <span>もう一度引く</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- LIFF SDK -->
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+    <!-- アプリのロジック -->
+    <script>
+        // 要素の取得
+        const screenCard = document.getElementById('screen-card');
+        const screenShaking = document.getElementById('screen-shaking');
+        const screenResult = document.getElementById('screen-result');
+        const bgPattern = document.getElementById('bg-pattern'); // 年賀状画面のみ表示する背景
+        const confettiContainer = document.getElementById('confetti-container');
+
+        const btnDraw = document.getElementById('btn-draw');
+        const btnReset = document.getElementById('btn-reset');
+
+        // 画面切り替え関数
+        function switchScreen(targetScreen) {
+            // 全て非表示
+            screenCard.classList.add('hidden');
+            screenShaking.classList.add('hidden');
+            screenResult.classList.add('hidden');
+            
+            // 年賀状背景の制御（年賀状画面のみ表示）
+            if (targetScreen === 'card') {
+                screenCard.classList.remove('hidden');
+                screenCard.classList.add('flex'); // flex displayに戻す
+                bgPattern.classList.remove('hidden');
+            } 
+            else if (targetScreen === 'shaking') {
+                screenShaking.classList.remove('hidden');
+                screenShaking.classList.add('flex');
+                bgPattern.classList.add('hidden');
+                
+                // 紙吹雪をクリア
+                confettiContainer.innerHTML = '';
+            } 
+            else if (targetScreen === 'result') {
+                screenResult.classList.remove('hidden');
+                screenResult.classList.add('flex');
+                bgPattern.classList.add('hidden');
+                
+                // 紙吹雪アニメーション開始
+                startConfetti();
+            }
+        }
+
+        // 紙吹雪生成関数
+        function startConfetti() {
+            confettiContainer.innerHTML = '';
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'absolute w-3 h-3 bg-gradient-to-tr from-yellow-400 to-red-500 rounded-sm z-20 animate-confetti';
+                
+                // ランダムな位置と遅延
+                const left = Math.random() * 100;
+                const delay = Math.random() * 2;
+                const duration = 2 + Math.random() * 3;
+
+                confetti.style.left = `${left}%`;
+                confetti.style.top = '-20px';
+                confetti.style.animationDelay = `${delay}s`;
+                confetti.style.animationDuration = `${duration}s`;
+
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        // イベントリスナー設定
+        btnDraw.addEventListener('click', () => {
+            switchScreen('shaking');
+            
+            // 3秒後に結果画面へ
+            setTimeout(() => {
+                switchScreen('result');
+            }, 3000);
+        });
+
+        btnReset.addEventListener('click', () => {
+            switchScreen('card');
+        });
+
+        // LIFF 初期化
+        // 実際のアプリIDに置き換えてください
+        const LIFF_ID = "LIFF_ID_PLACEHOLDER"; 
+
+        if (typeof liff !== 'undefined') {
+            // プレホルダーのままの場合は初期化しない（エラー回避のため）
+            if (LIFF_ID === "LIFF_ID_PLACEHOLDER") {
+                console.warn("LIFF IDが設定されていません。LINE LIFFとして動作させるには、const LIFF_ID の値を実際のLIFF IDに変更してください。現在はWebアプリモードで動作しています。");
+            } else {
+                liff.init({ liffId: LIFF_ID })
+                    .then(() => {
+                        console.log("LIFF initialization succeeded");
+                        // 必要であればここでユーザー情報の取得などを行う
+                        // if (liff.isLoggedIn()) { ... }
+                    })
+                    .catch((err) => {
+                        console.error("LIFF initialization failed", err);
+                    });
+            }
+        }
+    </script>
+</body>
+</html>
